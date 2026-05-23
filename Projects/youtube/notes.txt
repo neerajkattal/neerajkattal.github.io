@@ -1,0 +1,145 @@
+  Things learned;
+
+--to get search box/ticboc etc-- use <input type="textbox" placeholder="any text youu wanna show over there"
+
+
+
+1: padding- to give left right top bottom width withoiut specific length given by us through heigh and width
+2. transition- for smooth transition
+3.vertical align- allignment of line/ button etc
+4.opacity
+5.margin- right left space dena
+6. .classname:hover --  it perform action when cursor is over the linw or button
+7. .classname.active -- it perform action when cursor is clickedd
+8.box-shadow: a,b,c, color -- color represents- shadow color
+                                a,- horizontal value
+				b-vertical value
+				c- blur value
+9.box-shadow: a,b,c, rgba( e,f,g,h)--- e represents red, f green, g blue, and h represents how much fade/tranasparent the color would be
+
+
+-------------------------------------
+10.text eliment- create speicific function wihin paragaphf lines to lets say speicific word like bold, underline etc.
+ for eg -- <u>hello</u-- underline
+        <strong>>hello</strong>---- bold the hello word
+         <span> hello</span> --use to give class and edit ourself as per our need say hover , click etc
+11. to create space between th eline we use <span class= classname> hello </span>
+	-this help to create class in css so that then we can add margin-left to give space.
+
+
+-------------------------------------------
+note-
+  we can style within the dev and other options: for eg
+<div style="background-color: lightblue; ">100px</div>
+
+12.justify-content-space-between--- used in flex box to align the block to corner properly
+13. grid--- used to make block without help of display: inline block, flex is more flexible than rid box. 
+grid box-- we can set row and column that are needed -- we use display:grid;							             grid-template-columns: 1fr 1fr 1fr 1fr; 
+			
+			-- after : above it also represents number ofcolumn. above are 4 for eg
+			-- 1fr represents free space... if we hve 1fr and 2 fr. its like ratio. 				one take 1 space and other take 2 space proportinally
+
+			--- column-gap: 20px;
+                    row-gap: 40px;--- used to give gap between row and columns
+all ia within <dev> 
+
+14. flexbox- use display:flex;
+		flex-direction: row;"-- to specify flex box direction
+		
+--(only works with flex ig conifmr krle)justify-content: center; it align the content in center,start or end etc.
+--justify-content: space-between--- spaces in between the columns//try it yourself
+---align-items: center;--- align the items on start, end or middle/center.
+	
+---flex ox property to not let shrink its tab----- flex-shrink:0;					--it wont shrink the flex box when resizing
+
+
+--prpert to let it shrink----width:0;
+------------------------------
+-----CSS POSITION
+---helps keep header top of the page while we scroll///
+---helps sider at top of the page during scrolls
+---element on top of another element--for eg ntifiation number over noti icon
+   hover over we have tool kit .
+--- emelnt used are-- position: fixed;-- it maked the sle==elected part hover over other part
+    --- top: 10px;-- it give space from top
+--- left: 10px;----//right//bottom// are same
+
+----------------------------
+---position: absolute;
+--- it is placed on the page--it does move when we scroll
+whereas positon:fixed; is placed in the browser window--it doesnt moe when we scroll
+
+----z-index:1;--- when some element comes above other -- z index
+gives priority to which should come above. or we can write div above it 
+or use z-index:1;
+
+--uses-- it is used to put lets say a cross above window, on notificaton we put numbers etc
+---it is inside position relative ...
+
+
+------------------------
+---position:relative;
+---used to positon thing normallly... can scroll with page by putting it in 
+the target div file..
+
+----------------------
+
+to target th eimage withim some div class
+---we can use .classname img{}
+
+-- by giving space after selecting div we target the img in lets say sidear-link 
+only and not other image
+------------------------------
+
+---pointer-events: none;
+- this cna let us not do anything when we hover over soomething.. fr eg when we
+hover ver  search button only then we can see search coming.. no if we hover over the
+actual position of search
+
+------------------------------------------
+to make the page responsive we use MEDIA QUERY
+
+---- @media(screensize){
+}
+
+----eg  @media (max-width:750px){
+
+    .video-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+
+--------------------SHORTCUTS--------------
+instead of     padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+
+-----use padding: 4px;--- it create padding on all sides
+
+
+--- or use padding: vertical value horizontal value;
+eg padding: 4px 6px;
+
+------ for dour direction-- padding: top right bottom left; (clockwise from top"
+}
+
+------------ SIMILARLY FOR MARGIN: 4px;
+----------------------------------------------------
+instead of  border-width: 1px;
+    border-style: solid;
+    border-color: rgb(192, 192, 192);
+
+
+----we can use border: width style color;
+
+---------------------------------------------
+INHERITANCE-- it gets paseed on to element within parent body and mostly on text things
+
+for eg -- text-decoration:underline;
+
+---------------------------specificity--
+
+--semantic elements

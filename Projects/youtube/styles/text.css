@@ -1,0 +1,54 @@
+p{
+    font-family: arial;
+}
+
+.line{
+font-size: 18px;
+
+font-weight: bold;
+
+width: 280px;
+line-height: 24px;
+margin-bottom: 5px;
+}
+
+.view{
+
+font-size: 14px;
+color: rgb(96, 96, 96);
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+
+.name{
+
+font-size: 14px;
+color: rgb(96, 96, 96);
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+.line2{
+font-family: Arial;
+font-size: 14px;
+color: rgb(96, 96, 96);
+width: 280px;
+line-height: 22px ;
+}
+
+.apple{
+    font-size: 14px;
+    color:white;
+    background-color: rgb(227, 65, 64);
+    padding-left: 10PX;        
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.example:hover{
+text-decoration: underline;
+cursor: pointer;
+}

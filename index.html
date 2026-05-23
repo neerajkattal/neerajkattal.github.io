@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Neeraj Kattal Portfolio</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#0f172a;
+      color:white;
+    }
+
+    header{
+      text-align:center;
+      padding:60px 20px;
+    }
+
+    h1{
+      font-size:50px;
+      margin-bottom:10px;
+    }
+
+    .projects{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:25px;
+      padding:40px;
+    }
+
+    .card{
+      background:#1e293b;
+      width:280px;
+      padding:25px;
+      border-radius:16px;
+      transition:0.3s;
+      text-align:center;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card h2{
+      margin-top:0;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:10px 20px;
+      background:#3b82f6;
+      color:white;
+      border-radius:8px;
+      text-decoration:none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Neeraj Kattal</h1>
+  <p>Frontend Developer • CS Student</p>
+</header>
+
+<section class="projects">
+
+  <div class="card">
+    <h2>YouTube Clone</h2>
+    <p>HTML + CSS YouTube UI clone project.</p>
+
+    <a class="btn"
+       href="projects/youtube-clone/">
+       Open Project
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Weather App</h2>
+    <p>JavaScript weather API project.</p>
+
+    <a class="btn"
+       href="projects/weather-app/">
+       Open Project
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Netflix Clone</h2>
+    <p>Responsive Netflix homepage clone.</p>
+
+    <a class="btn"
+       href="projects/netflix-clone/">
+       Open Project
+    </a>
+  </div>
+
+</section>
+
+</body>
+</html>

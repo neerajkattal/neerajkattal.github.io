@@ -1,153 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Neeraj Kattal Portfolio</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neeraj Kattal | Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body{
-      margin:0;
-      font-family:Arial;
-      background:#0f172a;
-      color:white;
+    :root {
+      --bg: #0a0f1e;
+      --surface: #111827;
+      --card: #1a2235;
+      --border: #1e2d45;
+      --accent: #3b82f6;
+      --accent2: #6366f1;
+      --green: #10b981;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --tag-bg: #1e3a5f;
+      --tag-text: #93c5fd;
     }
 
-    header{
-      text-align:center;
-      padding:60px 20px;
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    h1{
-      font-size:50px;
-      margin-bottom:10px;
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 60px;
+      background: rgba(10,15,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+    }
+    .hero-inner { max-width: 720px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+      color: #93c5fd; font-size: 13px; font-weight: 500;
+      padding: 6px 16px; border-radius: 999px; margin-bottom: 28px;
+    }
+    .hero-badge span { width: 7px; height: 7px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    .hero h1 { font-size: clamp(42px, 7vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 16px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #93c5fd 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub { font-size: 18px; color: var(--muted); margin-bottom: 12px; font-weight: 400; line-height: 1.7; }
+    .hero-desc { font-size: 15px; color: #64748b; margin-bottom: 40px; line-height: 1.8; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary {
+      padding: 13px 28px; background: var(--accent); color: white;
+      border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600;
+      transition: all 0.2s; box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-outline {
+      padding: 13px 28px; background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px; text-decoration: none;
+      font-size: 14px; font-weight: 600; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 40px; justify-content: center; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 90px 20px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px, 4vw, 38px); font-weight: 700; margin-bottom: 12px; }
+    .section-desc { color: var(--muted); font-size: 16px; max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+
+    /* SKILLS */
+    #skills { background: var(--surface); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: rgba(59,130,246,0.4); }
+    .skill-icon { font-size: 26px; margin-bottom: 12px; }
+    .skill-cat { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      background: var(--tag-bg); color: var(--tag-text);
+      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px;
     }
 
-    .projects{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:25px;
-      padding:40px;
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      display: flex; flex-direction: column;
+      transition: all 0.25s;
+      position: relative; overflow: hidden;
     }
-
-    .card{
-      background:#1e293b;
-      width:280px;
-      padding:25px;
-      border-radius:16px;
-      transition:0.3s;
-      text-align:center;
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.25s;
     }
-
-    .card:hover{
-      transform:translateY(-5px);
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.35); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .project-card:hover::before { opacity: 1; }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .project-icon { font-size: 28px; }
+    .project-links { display: flex; gap: 10px; }
+    .icon-link { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; display: flex; align-items: center; gap: 5px; }
+    .icon-link:hover { color: var(--accent); }
+    .project-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .project-desc { color: var(--muted); font-size: 14px; line-height: 1.75; flex: 1; margin-bottom: 16px; }
+    .project-features { margin-bottom: 18px; }
+    .feature { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+    .feature::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .stack-tag {
+      background: rgba(99,102,241,0.15); color: #a5b4fc;
+      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px;
+      border: 1px solid rgba(99,102,241,0.2);
     }
-
-    .card h2{
-      margin-top:0;
+    .project-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-demo {
+      flex: 1; text-align: center; padding: 10px 16px;
+      background: var(--accent); color: white; border-radius: 8px;
+      text-decoration: none; font-size: 13px; font-weight: 600;
+      transition: all 0.2s; min-width: 100px;
     }
-
-    .btn{
-      display:inline-block;
-      margin-top:15px;
-      padding:10px 20px;
-      background:#3b82f6;
-      color:white;
-      border-radius:8px;
-      text-decoration:none;
+    .btn-demo:hover { background: #2563eb; }
+    .btn-repo {
+      flex: 1; text-align: center; padding: 10px 16px;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px;
+      text-decoration: none; font-size: 13px; font-weight: 600;
+      transition: all 0.2s; min-width: 100px;
     }
+    .btn-repo:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    @media(max-width: 768px){ .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { color: var(--muted); font-size: 15px; line-height: 1.85; margin-bottom: 16px; }
+    .about-highlights { display: flex; flex-direction: column; gap: 14px; }
+    .highlight {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .highlight-icon { font-size: 22px; flex-shrink: 0; }
+    .highlight-label { font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+    .highlight-val { font-size: 14px; font-weight: 600; }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 48px; text-align: center; max-width: 640px; margin: 0 auto;
+    }
+    .contact-box h3 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+    .contact-box p { color: var(--muted); font-size: 15px; margin-bottom: 32px; line-height: 1.7; }
+    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contact-btn {
+      padding: 12px 24px; border-radius: 10px; text-decoration: none;
+      font-size: 14px; font-weight: 600; transition: all 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .contact-email { background: var(--accent); color: white; }
+    .contact-email:hover { background: #2563eb; transform: translateY(-2px); }
+    .contact-gh { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    .contact-gh:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-li { background: rgba(10,102,194,0.15); color: #60a5fa; border: 1px solid rgba(10,102,194,0.3); }
+    .contact-li:hover { background: rgba(10,102,194,0.25); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 28px; border-top: 1px solid var(--border); color: #475569; font-size: 13px; }
+
+    @media(max-width: 640px){
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero-stats { gap: 24px; }
+    }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Neeraj Kattal</h1>
-  <p>Frontend Developer • CS Student</p>
-</header>
-
-<section class="projects">
-
-  <div class="card">
-    <h2>YouTube Clone</h2>
-    <p>HTML + CSS YouTube UI clone project.</p>
-
-    <a class="btn"
-       href="Projects/youtube/youtube.html">
-       Open Project
-    </a>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">NK.</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <div class="card">
-
-    <h2>Task Manager App</h2>
-
-    <p>
-      Full-stack task management application built with
-      React, FastAPI, and PostgreSQL.
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span></span> Open to Internships &amp; Graduate Roles in NZ
+    </div>
+    <h1>Neeraj Kattal</h1>
+    <p class="hero-sub">Full-Stack Developer &nbsp;·&nbsp; Software Engineering Student &nbsp;·&nbsp; Auckland, NZ</p>
+    <p class="hero-desc">
+      Master of Software Engineering student at Yoobee College, Auckland. I build full-stack web applications
+      using FastAPI, React.js, and modern deployment workflows. Passionate about clean architecture,
+      real-world problem solving, and contributing to great software teams.
     </p>
-
-    <a class="btn"
-      href="https://smart-task-manager-self-five.vercel.app/"
-      target="_blank">
-
-      Live Demo
-
-    </a>
-
-    <br><br>
-
-    <a class="btn"
-      href="https://github.com/neerajkattal/smart-task-manager"
-      target="_blank">
-
-      GitHub Repo
-
-    </a>
-
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Projects</a>
+      <a href="https://github.com/neerajkattal" target="_blank" class="btn-outline">GitHub Profile</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects Built</div></div>
+      <div class="stat"><div class="stat-num">1yr+</div><div class="stat-label">IT Experience</div></div>
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Tech Stack</div></div>
+    </div>
   </div>
-
-  <div class="card">
-
-    <h2>FASTAPI Blog</h2>
-
-    <p>
-
-    Backend-focused web application built as part of a guided FastAPI learning project. <p>
-      Implemented RESTful endpoints, user authentication, database integration, server-side rendering with Jinja2, and application configuration using environment variables. 
-    </p>
-    <p>
-      Deployed the application on Render to gain hands-on experience with production deployment, API development, and backend architecture.
-    </p>
-
-  
-    </p>
-    <p>  Stack: Python, FastAPI, SQLAlchemy, Jinja2, SQLite, Render</p>
-
-    <a class="btn"
-      href="https://fastapi-blog-stle.onrender.com"
-      target="_blank">
-
-      Live Demo
-
-    </a>
-
-    <br><br>
-
-    <a class="btn"
-      href="https://github.com/neerajkattal/FastApi-Blog"
-      target="_blank">
-
-      GitHub Repo
-
-    </a>
-
-  
-
 </section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-desc">Real-world applications built from scratch — covering full-stack development, authentication systems, and production deployment.</p>
+    <div class="projects-grid">
+
+      <!-- Task Manager -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">✅</div>
+          <div class="project-links">
+            <a class="icon-link" href="https://smart-task-manager-self-five.vercel.app/" target="_blank">↗ Live</a>
+            <a class="icon-link" href="https://github.com/neerajkattal/smart-task-manager" target="_blank">⌥ Code</a>
+          </div>
+        </div>
+        <div class="project-title">Full Stack Task Manager</div>
+        <p class="project-desc">A production-ready task management application with secure user authentication, real-time task management, and a fully responsive UI.</p>
+        <div class="project-features">
+          <div class="feature">JWT-based login, registration &amp; protected routes</div>
+          <div class="feature">Full CRUD operations with pagination</div>
+          <div class="feature">React.js frontend with FastAPI REST backend</div>
+          <div class="feature">Deployed on Vercel (frontend) &amp; Render (backend)</div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">React.js</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">JWT Auth</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Vercel</span>
+          <span class="stack-tag">Render</span>
+        </div>
+        <div class="project-btns">
+          <a class="btn-demo" href="https://smart-task-manager-self-five.vercel.app/" target="_blank">Live Demo</a>
+          <a class="btn-repo" href="https://github.com/neerajkattal/smart-task-manager" target="_blank">GitHub Repo</a>
+        </div>
+      </div>
+
+      <!-- Blog -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">📝</div>
+          <div class="project-links">
+            <a class="icon-link" href="https://fastapi-blog-stle.onrender.com/" target="_blank">↗ Live</a>
+            <a class="icon-link" href="https://github.com/neerajkattal/FastApi-Blog" target="_blank">⌥ Code</a>
+          </div>
+        </div>
+        <div class="project-title">Blog Management System</div>
+        <p class="project-desc">A fully featured blog backend with user account management, secure authentication flows, image uploads, and a live deployed API.</p>
+        <div class="project-features">
+          <div class="feature">JWT authentication &amp; authorisation</div>
+          <div class="feature">Forgot password &amp; email-based reset flow</div>
+          <div class="feature">Image upload, pagination &amp; full CRUD</div>
+          <div class="feature">Deployed live on Render with GitHub integration</div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">SQLAlchemy</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Jinja2</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Render</span>
+        </div>
+        <div class="project-btns">
+          <a class="btn-demo" href="https://fastapi-blog-stle.onrender.com/" target="_blank">Live Demo</a>
+          <a class="btn-repo" href="https://github.com/neerajkattal/FastApi-Blog" target="_blank">GitHub Repo</a>
+        </div>
+      </div>
+
+      <!-- YouTube Clone -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🎬</div>
+          <div class="project-links">
+            <a class="icon-link" href="Projects/youtube/youtube.html">↗ Live</a>
+            <a class="icon-link" href="https://github.com/neerajkattal" target="_blank">⌥ Code</a>
+          </div>
+        </div>
+        <div class="project-title">YouTube UI Clone</div>
+        <p class="project-desc">A pixel-faithful YouTube homepage clone built with pure HTML and CSS, demonstrating strong UI layout and responsive design skills.</p>
+        <div class="project-features">
+          <div class="feature">Responsive layout using Flexbox &amp; CSS Grid</div>
+          <div class="feature">Component-based structure (sidebar, navbar, cards)</div>
+          <div class="feature">Pure HTML &amp; CSS — no frameworks</div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML5</span>
+          <span class="stack-tag">CSS3</span>
+          <span class="stack-tag">Flexbox</span>
+          <span class="stack-tag">CSS Grid</span>
+        </div>
+        <div class="project-btns">
+          <a class="btn-demo" href="Projects/youtube/youtube.html">Open Project</a>
+          <a class="btn-repo" href="https://github.com/neerajkattal" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <p class="section-desc">A full-stack skill set covering frontend, backend, databases, and deployment tools.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">⚛️</div>
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag">React.js</span><span class="tag">JavaScript</span>
+          <span class="tag">HTML5</span><span class="tag">CSS3</span>
+          <span class="tag">Tailwind CSS</span><span class="tag">React Hooks</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-cat">Backend</div>
+        <div class="skill-tags">
+          <span class="tag">FastAPI</span><span class="tag">Flask</span>
+          <span class="tag">Python</span><span class="tag">REST APIs</span>
+          <span class="tag">JWT Auth</span><span class="tag">Pydantic</span>
+          <span class="tag">SQLAlchemy</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-cat">Databases &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="tag">SQLite</span><span class="tag">PostgreSQL</span>
+          <span class="tag">Git</span><span class="tag">GitHub</span>
+          <span class="tag">Postman</span><span class="tag">VS Code</span>
+          <span class="tag">Vercel</span><span class="tag">Render</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-cat">Core CS</div>
+        <div class="skill-tags">
+          <span class="tag">DSA</span><span class="tag">OOP</span>
+          <span class="tag">Dynamic Programming</span><span class="tag">C++</span>
+          <span class="tag">Problem Solving</span><span class="tag">API Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Master of Software Engineering student at Yoobee College, Auckland, with a background in computer applications and real-world IT experience as a Tech Analyst at eClerx Services.</p>
+        <p>I enjoy building full-stack applications — from designing REST APIs and authentication systems to deploying production-ready apps. I'm currently seeking internship and junior developer opportunities in New Zealand.</p>
+        <p>When I'm not coding, I'm working part-time at Woolworths NZ and applying the same attention to detail and reliability I bring to software development.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight">
+          <div class="highlight-icon">🎓</div>
+          <div>
+            <div class="highlight-label">Education</div>
+            <div class="highlight-val">MSc Software Engineering — Yoobee College, Auckland</div>
+          </div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">💼</div>
+          <div>
+            <div class="highlight-label">IT Experience</div>
+            <div class="highlight-val">Tech Analyst — eClerx Services (1+ year)</div>
+          </div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">📍</div>
+          <div>
+            <div class="highlight-label">Location</div>
+            <div class="highlight-val">Silverdale, Auckland, New Zealand</div>
+          </div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">✅</div>
+          <div>
+            <div class="highlight-label">Work Rights</div>
+            <div class="highlight-val">Authorised to work part-time &amp; full-time internship in NZ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <h3>Let's Work Together</h3>
+      <p>I'm actively looking for software engineering internships and graduate roles in Auckland and across New Zealand. Feel free to reach out!</p>
+      <div class="contact-links">
+        <a class="contact-btn contact-email" href="mailto:kattalneeraj7@gmail.com">✉ Email Me</a>
+        <a class="contact-btn contact-gh" href="https://github.com/neerajkattal" target="_blank">⌥ GitHub</a>
+        <a class="contact-btn contact-li" href="#" target="_blank">in LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Neeraj Kattal · Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
+</footer>
 
 </body>
 </html>

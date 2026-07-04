@@ -223,7 +223,7 @@ section { padding: 100px 20px; position: relative; z-index: 1; }
 .tl-meta { font-size: 13px; color: var(--accent2); margin-bottom: 10px; font-weight: 600; }
 .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.7; list-style: none; }
 .tl-desc li { margin-bottom: 6px; padding-left: 18px; position: relative; }
-.tl-desc li::before { content: "—"; position: absolute; left: 0; color: var(--muted2); }
+.tl-desc li::before { content: "•"; position: absolute; left: 0; color: var(--muted2); }
 
 /* ============ ABOUT ============ */
 #about { background: var(--surface); }

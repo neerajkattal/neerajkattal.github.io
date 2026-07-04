@@ -1,260 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description"
-    content="Neeraj Kattal - Full Stack Developer, FastAPI and React Developer based in Auckland, New Zealand.">
+  <meta name="description" content="Neeraj Kattal - Full Stack Developer, FastAPI and React Developer based in Auckland, New Zealand.">
   <meta name="author" content="Neeraj Kattal">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Neeraj Kattal | Software Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0a0f1e;
-      --surface: #111827;
-      --card: #1a2235;
-      --border: #1e2d45;
-      --accent: #3b82f6;
-      --accent2: #6366f1;
-      --green: #10b981;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --tag-bg: #1e3a5f;
-      --tag-text: #93c5fd;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 60px;
-      background: rgba(10,15,30,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 20px 80px;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
-    }
-    .hero-inner { max-width: 720px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
-      color: #93c5fd; font-size: 13px; font-weight: 500;
-      padding: 6px 16px; border-radius: 999px; margin-bottom: 28px;
-    }
-    .hero-badge span { width: 7px; height: 7px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-    .hero h1 { font-size: clamp(42px, 7vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 16px;
-      background: linear-gradient(135deg, #f1f5f9 0%, #93c5fd 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-sub { font-size: 18px; color: var(--muted); margin-bottom: 12px; font-weight: 400; line-height: 1.7; }
-    .hero-desc { font-size: 15px; color: #64748b; margin-bottom: 40px; line-height: 1.8; max-width: 560px; margin-left: auto; margin-right: auto; }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
-    .btn-primary {
-      padding: 13px 28px; background: var(--accent); color: white;
-      border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600;
-      transition: all 0.2s; box-shadow: 0 4px 20px rgba(59,130,246,0.35);
-    }
-    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
-    .btn-outline {
-      padding: 13px 28px; background: transparent; color: var(--text);
-      border: 1px solid var(--border); border-radius: 10px; text-decoration: none;
-      font-size: 14px; font-weight: 600; transition: all 0.2s;
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    .hero-stats { display: flex; gap: 40px; justify-content: center; }
-    .stat { text-align: center; }
-    .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
-    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-    /* SECTIONS */
-    section { padding: 90px 20px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-    .section-title { font-size: clamp(28px, 4vw, 38px); font-weight: 700; margin-bottom: 12px; }
-    .section-desc { color: var(--muted); font-size: 16px; max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
-
-    /* SKILLS */
-    #skills { background: var(--surface); }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .skill-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 24px;
-      transition: border-color 0.2s;
-    }
-    .skill-card:hover { border-color: rgba(59,130,246,0.4); }
-    .skill-icon { font-size: 26px; margin-bottom: 12px; }
-    .skill-cat { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag {
-      background: var(--tag-bg); color: var(--tag-text);
-      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px;
-    }
-
-    /* PROJECTS */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .project-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px;
-      display: flex; flex-direction: column;
-      transition: all 0.25s;
-      position: relative; overflow: hidden;
-    }
-    .project-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity 0.25s;
-    }
-    .project-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.35); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-    .project-card:hover::before { opacity: 1; }
-    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-    .project-icon { font-size: 28px; }
-    .project-links { display: flex; gap: 10px; }
-    .icon-link { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; display: flex; align-items: center; gap: 5px; }
-    .icon-link:hover { color: var(--accent); }
-    .project-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .project-desc { color: var(--muted); font-size: 14px; line-height: 1.75; flex: 1; margin-bottom: 16px; }
-    .project-features { margin-bottom: 18px; }
-    .feature { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 13px; color: #cbd5e1; line-height: 1.5; }
-    .feature::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-    .stack-tag {
-      background: rgba(99,102,241,0.15); color: #a5b4fc;
-      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 6px;
-      border: 1px solid rgba(99,102,241,0.2);
-    }
-    .project-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-demo {
-      flex: 1; text-align: center; padding: 10px 16px;
-      background: var(--accent); color: white; border-radius: 8px;
-      text-decoration: none; font-size: 13px; font-weight: 600;
-      transition: all 0.2s; min-width: 100px;
-    }
-    .btn-demo:hover { background: #2563eb; }
-    .btn-repo {
-      flex: 1; text-align: center; padding: 10px 16px;
-      background: transparent; color: var(--text);
-      border: 1px solid var(--border); border-radius: 8px;
-      text-decoration: none; font-size: 13px; font-weight: 600;
-      transition: all 0.2s; min-width: 100px;
-    }
-    .btn-repo:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ABOUT */
-    #about { background: var(--surface); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    @media(max-width: 768px){ .about-grid { grid-template-columns: 1fr; } }
-    .about-text p { color: var(--muted); font-size: 15px; line-height: 1.85; margin-bottom: 16px; }
-    .about-highlights { display: flex; flex-direction: column; gap: 14px; }
-    .highlight {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 18px 20px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .highlight-icon { font-size: 22px; flex-shrink: 0; }
-    .highlight-label { font-size: 12px; color: var(--muted); margin-bottom: 3px; }
-    .highlight-val { font-size: 14px; font-weight: 600; }
-
-    /* CONTACT */
-    .contact-box {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 48px; text-align: center; max-width: 640px; margin: 0 auto;
-    }
-    .contact-box h3 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
-    .contact-box p { color: var(--muted); font-size: 15px; margin-bottom: 32px; line-height: 1.7; }
-    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .contact-btn {
-      padding: 12px 24px; border-radius: 10px; text-decoration: none;
-      font-size: 14px; font-weight: 600; transition: all 0.2s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .contact-email { background: var(--accent); color: white; }
-    .contact-email:hover { background: #2563eb; transform: translateY(-2px); }
-    .contact-gh { background: var(--card); color: var(--text); border: 1px solid var(--border); }
-    .contact-gh:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    .contact-li { background: rgba(10,102,194,0.15); color: #60a5fa; border: 1px solid rgba(10,102,194,0.3); }
-    .contact-li:hover { background: rgba(10,102,194,0.25); transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer { text-align: center; padding: 28px; border-top: 1px solid var(--border); color: #475569; font-size: 13px; }
-
-    @media(max-width: 640px){
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
-      .hero-stats { gap: 24px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- NAV -->
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+<div class="scroll-progress"></div>
+
 <nav>
-  <div class="nav-logo">NK.</div>
-  <div class="nav-links">
+  <div class="nav-logo">⌘ NK.</div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
     <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
+    <a href="assets/Neeraj_Kattal_CV.pdf" class="nav-cv" download>Download CV</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-inner">
     <div class="hero-badge">
       <span></span> Open to Internships &amp; Graduate Roles in NZ
     </div>
     <h1>Neeraj Kattal</h1>
-    <p class="hero-sub">Full-Stack Developer &nbsp;·&nbsp; Software Engineering Student &nbsp;·&nbsp; Auckland, NZ</p>
+    <p class="hero-typed"><span id="typedText"></span><span class="cursor">&nbsp;</span></p>
     <p class="hero-desc">
-      Master of Software Engineering student at Yoobee College, Auckland. I build full-stack web applications
-      using FastAPI, React.js, Docker, and modern deployment workflows. Passionate about clean architecture,
-      real-world problem solving, and contributing to great software teams.
+      Master of Software Engineering student at Yoobee College, Auckland, with real-world IT experience as a
+      Junior Software Engineer and Tech Analyst. I build full-stack web applications using FastAPI, React.js,
+      and Docker, backed by proven client-facing and problem-solving experience from industry roles in India and New Zealand.
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View My Projects</a>
+      <a href="assets/Neeraj_Kattal_CV.pdf" class="btn-outline" download>⬇ Download CV</a>
       <a href="https://github.com/neerajkattal" target="_blank" class="btn-outline">GitHub Profile</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects Built</div></div>
-      <div class="stat"><div class="stat-num">1yr+</div><div class="stat-label">IT Experience</div></div>
-      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Tool & Frameworks</div></div>
+      <div class="stat"><div class="stat-num" data-target="3" data-suffix="+">0</div><div class="stat-label">Projects Built</div></div>
+      <div class="stat"><div class="stat-num" data-target="2" data-suffix="yr+">0</div><div class="stat-label">IT Experience</div></div>
+      <div class="stat"><div class="stat-num" data-target="10" data-suffix="+">0</div><div class="stat-label">Tools &amp; Frameworks</div></div>
     </div>
   </div>
+  <div class="scroll-indicator">↓</div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
-    <div class="section-label">Portfolio</div>
-    <h2 class="section-title">Projects</h2>
-    <p class="section-desc">Real-world applications built from scratch — covering full-stack development, authentication systems, and production deployment.</p>
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Projects</h2>
+    <p class="section-desc reveal">Real-world applications built from scratch, covering full-stack development, authentication systems, and production deployment.</p>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="react">React</button>
+      <button class="filter-btn" data-filter="fastapi">FastAPI</button>
+      <button class="filter-btn" data-filter="docker">Docker</button>
+      <button class="filter-btn" data-filter="html">HTML/CSS</button>
+    </div>
+
     <div class="projects-grid">
 
-      <!-- Task Manager -->
-      <div class="project-card">
+      <div class="project-card reveal" data-tags="react fastapi docker">
         <div class="project-header">
           <div class="project-icon">✅</div>
           <div class="project-links">
@@ -287,8 +105,7 @@
         </div>
       </div>
 
-      <!-- Blog -->
-      <div class="project-card">
+      <div class="project-card reveal" data-tags="fastapi">
         <div class="project-header">
           <div class="project-icon">📝</div>
           <div class="project-links">
@@ -302,6 +119,7 @@
           <div class="feature">JWT authentication &amp; authorisation</div>
           <div class="feature">Forgot password &amp; email-based reset flow</div>
           <div class="feature">Image upload, pagination &amp; full CRUD</div>
+          <div class="feature">Async SQLAlchemy ORM with SQLite</div>
           <div class="feature">Deployed live on Render with GitHub integration</div>
         </div>
         <div class="project-stack">
@@ -318,25 +136,26 @@
         </div>
       </div>
 
-      <!-- YouTube Clone -->
-      <div class="project-card">
+      <div class="project-card reveal" data-tags="html">
         <div class="project-header">
           <div class="project-icon">🎬</div>
           <div class="project-links">
-            <a class="icon-link" href="https://neerajkattal.github.io/youtube-clone/" target="_blank">↗ Live</a>
+            <a class="icon-link" href="Projects/youtube/youtube.html">↗ Live</a>
             <a class="icon-link" href="https://github.com/neerajkattal" target="_blank">⌥ Code</a>
           </div>
         </div>
-        <div class="project-title">YouTube UI Clone</div>
-        <p class="project-desc">A pixel-faithful YouTube homepage clone built with pure HTML and CSS, demonstrating strong UI layout and responsive design skills.</p>
+        <div class="project-title">Frontend Development Projects</div>
+        <p class="project-desc">A collection of frontend projects including a pixel-faithful YouTube homepage clone and an Amazon-style JavaScript project, showcasing UI layout and DOM interaction skills.</p>
         <div class="project-features">
           <div class="feature">Responsive layout using Flexbox &amp; CSS Grid</div>
           <div class="feature">Component-based structure (sidebar, navbar, cards)</div>
-          <div class="feature">Pure HTML &amp; CSS — no frameworks</div>
+          <div class="feature">DOM manipulation &amp; event handling (Amazon JS project)</div>
+          <div class="feature">Pure HTML, CSS &amp; JavaScript only, no frameworks used</div>
         </div>
         <div class="project-stack">
           <span class="stack-tag">HTML5</span>
           <span class="stack-tag">CSS3</span>
+          <span class="stack-tag">JavaScript</span>
           <span class="stack-tag">Flexbox</span>
           <span class="stack-tag">CSS Grid</span>
         </div>
@@ -346,18 +165,113 @@
         </div>
       </div>
 
+    
+      <div class="project-card reveal" data-tags="react fastapi weather">
+        <div class="project-header">
+          <div class="project-icon">🌦️</div>
+          <div class="project-links">
+            <span class="icon-link" style="opacity:0.6; cursor:default;">In Progress</span>
+          </div>
+        </div>
+        <div class="project-title">WeatherWear+ <span style="font-size:11px; font-weight:600; color:var(--accent4); background:var(--tag-bg); padding:3px 9px; border-radius:6px; margin-left:6px; vertical-align:middle;">In Progress</span></div>
+        <p class="project-desc">A full-stack academic project built with a project partner that recommends outfits based on real-time weather data. I own the backend, from weather API integration to recommendation logic.</p>
+        <div class="project-features">
+          <div class="feature">Real-time weather data integration via external API</div>
+          <div class="feature">Outfit recommendation logic based on temperature, conditions &amp; season</div>
+          <div class="feature">Backend built and owned end to end, paired frontend development</div>
+          <div class="feature">Currently in active development as an academic duo project</div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">React.js</span>
+          <span class="stack-tag">Weather API</span>
+        </div>
+        <div class="project-btns">
+          <span class="btn-repo" style="opacity:0.55; cursor:default; pointer-events:none;">Coming Soon</span>
+        </div>
+      </div>
+</div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label reveal">Career Journey</div>
+    <h2 class="section-title reveal">Work Experience</h2>
+    <p class="section-desc reveal">A mix of hands-on software engineering roles and client-facing IT experience across New Zealand and India.</p>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-card">
+          <div class="tl-role">Team Member, Replenishment · Woolworths New Zealand</div>
+          <div class="tl-meta">Auckland, NZ · May 2026 – Present</div>
+          <ul class="tl-desc">
+            <li>Managed stock replenishment and inventory workflows daily, maintaining accurate product availability across a high-volume retail floor.</li>
+            <li>Applied consistent attention to detail during restocking, reducing shelf gaps and improving customer shopping experience.</li>
+            <li>Balanced part-time employment with full-time postgraduate studies, proving strong time management under competing priorities.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-card">
+          <div class="tl-role">Junior Software Engineer · Finex Healthcare Limited</div>
+          <div class="tl-meta">India · June 2025 – December 2025</div>
+          <ul class="tl-desc">
+            <li>Built and shipped new features in a production web application used daily by internal stakeholders.</li>
+            <li>Refactored backend endpoints and validation logic in FastAPI, reducing API errors reported during QA cycles.</li>
+            <li>Collaborated in sprint planning and code reviews, using Docker and GitHub to keep releases consistent and reliable.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-card">
+          <div class="tl-role">Software Engineering Intern · Finex Healthcare Limited</div>
+          <div class="tl-meta">India · January 2025 – June 2025</div>
+          <ul class="tl-desc">
+            <li>Assisted in developing frontend and backend features across a live web application under senior engineer guidance.</li>
+            <li>Fixed reported bugs and improved UI consistency, directly reducing support tickets raised by end users.</li>
+            <li>Supported API integration work, learning production practices including version control and containerized workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-card">
+          <div class="tl-role">Sales &amp; Marketing Intern · Master-O (InspireOne Technologies)</div>
+          <div class="tl-meta">India · June 2024 – September 2024</div>
+          <ul class="tl-desc">
+            <li>Managed sales pipelines using CRM tools, improving lead tracking accuracy across the outreach process.</li>
+            <li>Analysed outreach data to identify engagement patterns, informing marketing strategy adjustments for the team.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-card">
+          <div class="tl-role">Tech Analyst · eClerx Services Limited</div>
+          <div class="tl-meta">India · February 2022 – March 2023</div>
+          <ul class="tl-desc">
+            <li>Analysed client data and resolved technical issues, earning recognition as a top performer during training.</li>
+            <li>Communicated directly with clients to troubleshoot problems, improving resolution speed and client satisfaction.</li>
+            <li>Managed multiple concurrent tasks in a fast-paced environment, strengthening prioritisation and problem-solving skills.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
-    <div class="section-label">Tech Stack</div>
-    <h2 class="section-title">Skills &amp; Technologies</h2>
-    <p class="section-desc">A full-stack skill set covering frontend, backend, databases, and deployment tools.</p>
+    <div class="section-label reveal">Tech Stack</div>
+    <h2 class="section-title reveal">Skills &amp; Technologies</h2>
+    <p class="section-desc reveal">A full-stack skill set covering frontend, backend, databases, and deployment tools.</p>
     <div class="skills-grid">
-      <div class="skill-card">
+      <div class="skill-card reveal">
         <div class="skill-icon">⚛️</div>
         <div class="skill-cat">Frontend</div>
         <div class="skill-tags">
@@ -367,7 +281,7 @@
           <span class="tag">Responsive Design</span>
         </div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card reveal">
         <div class="skill-icon">⚙️</div>
         <div class="skill-cat">Backend</div>
         <div class="skill-tags">
@@ -377,7 +291,7 @@
           <span class="tag">SQLAlchemy</span>
         </div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card reveal">
         <div class="skill-icon">🗄️</div>
         <div class="skill-cat">Databases &amp; Tools</div>
         <div class="skill-tags">
@@ -388,43 +302,67 @@
           <span class="tag">Vercel</span><span class="tag">Render</span>
         </div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card reveal">
         <div class="skill-icon">🧠</div>
-        <div class="skill-cat">Core CS</div>
+        <div class="skill-cat">Core CS &amp; Soft Skills</div>
         <div class="skill-tags">
           <span class="tag">DSA</span><span class="tag">OOP</span>
           <span class="tag">Dynamic Programming</span><span class="tag">C++</span>
-          <span class="tag">Problem Solving</span><span class="tag">API Design</span>
+          <span class="tag">Problem Solving</span><span class="tag">Client Communication</span>
+          <span class="tag">Team Collaboration</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
-    <div class="section-label">Background</div>
-    <h2 class="section-title">About Me</h2>
+    <div class="section-label reveal">Background</div>
+    <h2 class="section-title reveal">About Me</h2>
     <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a Master of Software Engineering student at Yoobee College, Auckland, with a background in computer applications and real-world IT experience as a Tech Analyst at eClerx Services.</p>
-        <p>I enjoy building full-stack applications — from designing REST APIs and authentication systems to containerizing and deploying production-ready apps. I'm currently seeking internship and junior developer opportunities in New Zealand.</p>
-        <p>When I'm not coding, I'm working part-time at Woolworths NZ and applying the same attention to detail and reliability I bring to software development.</p>
+      <div class="about-text reveal">
+        <p class="about-quote">&ldquo;Growth is the only evidence of life.&rdquo;</p>
+        <p class="about-quote-sub">That quote has stuck with me and shaped how I approach challenges, both in and out of my career.</p>
+
+        <div class="about-block">
+          <div class="about-block-label">The Mindset</div>
+          <p>That mindset keeps me curious and committed, whether I'm learning a new framework or figuring out how to make an idea actually work in the real world. I'd rather improve a little every day than stay comfortable doing the same thing.</p>
+        </div>
+
+        <div class="about-block">
+          <div class="about-block-label">The Journey</div>
+          <p>I'm a Full-Stack Developer currently completing my Master of Software Engineering in New Zealand. Along the way, I've worked as a Software Engineering Intern and later a Junior Software Engineer, contributing to full-stack web applications, testing features end to end, and supporting deployment workflows using modern development practices.</p>
+        </div>
+
+        <div class="about-block">
+          <div class="about-block-label">The Toolkit</div>
+          <p>I love turning half-formed ideas into functional, user-friendly applications, using technologies such as Python, React, FastAPI, RESTful APIs, and Docker as my toolkit of choice.</p>
+        </div>
+
+        <div class="about-block">
+          <div class="about-block-label">Currently Building</div>
+          <p>Right now I'm building <b>WeatherWear+</b> with a project partner, a full-stack app that recommends what to wear based on real-time weather data. I own the backend, handling the weather API integration, recommendation logic, and data flow end to end.</p>
+        </div>
+
+        <div class="about-block">
+          <div class="about-block-label">What's Next</div>
+          <p>I'm excited to build my career in New Zealand's tech industry. I'm currently exploring Software Engineering Internship, Graduate Software Engineer, or Junior Software Engineer opportunities, places where I can learn from experienced engineers, contribute to meaningful work, and keep improving.</p>
+        </div>
       </div>
-      <div class="about-highlights">
+      <div class="about-highlights reveal">
         <div class="highlight">
           <div class="highlight-icon">🎓</div>
           <div>
             <div class="highlight-label">Education</div>
-            <div class="highlight-val">Master of Software Engineering — Yoobee College, Auckland</div>
+            <div class="highlight-val">Master of Software Engineering, Yoobee College, Auckland</div>
           </div>
         </div>
         <div class="highlight">
           <div class="highlight-icon">💼</div>
           <div>
             <div class="highlight-label">IT Experience</div>
-            <div class="highlight-val">Tech Analyst — eClerx Services (1+ year)</div>
+            <div class="highlight-val">Junior Software Engineer, Finex Healthcare &amp; Tech Analyst, eClerx Services (2+ years)</div>
           </div>
         </div>
         <div class="highlight">
@@ -441,29 +379,38 @@
             <div class="highlight-val">Authorised to work part-time &amp; full-time internship in NZ</div>
           </div>
         </div>
+        <div class="highlight">
+          <div class="highlight-icon">🗣️</div>
+          <div>
+            <div class="highlight-label">Languages</div>
+            <div class="highlight-val">English (Fluent), Hindi (Native), Punjabi (Fluent)</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="contact-box">
-      <h3>Available for Internships & Graduate Roles</h3>
+    <div class="contact-box reveal">
+      <h3>Available for Internships &amp; Graduate Roles</h3>
       <p>I'm actively looking for software engineering internships and graduate roles in Auckland and across New Zealand.</p>
       <div class="contact-links">
         <a class="contact-btn contact-email" href="mailto:kattalneeraj7@gmail.com">✉ Email Me</a>
         <a class="contact-btn contact-gh" href="https://github.com/neerajkattal" target="_blank">⌥ GitHub</a>
-        
+        <a class="contact-btn contact-cv" href="assets/Neeraj_Kattal_CV.pdf" download>⬇ Download CV</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Neeraj Kattal · Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
+  <p>© 2026 Neeraj Kattal · Built with HTML, CSS &amp; JS · Hosted on GitHub Pages</p>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top">↑</button>
+
+<script src="js/main.js"></script>
 </body>
 </html>

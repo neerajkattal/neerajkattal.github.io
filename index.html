@@ -23,6 +23,7 @@
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
     <a href="assets/Neeraj_Kattal_CV.pdf" class="nav-cv" download>Download CV</a>
@@ -48,9 +49,9 @@
       <a href="https://github.com/neerajkattal" target="_blank" class="btn-outline">GitHub Profile</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num" data-target="3" data-suffix="+">0</div><div class="stat-label">Projects Built</div></div>
+      <div class="stat"><div class="stat-num" data-target="5" data-suffix="+">0</div><div class="stat-label">Projects Built</div></div>
       <div class="stat"><div class="stat-num" data-target="2" data-suffix="yr+">0</div><div class="stat-label">IT Experience</div></div>
-      <div class="stat"><div class="stat-num" data-target="10" data-suffix="+">0</div><div class="stat-label">Tools &amp; Frameworks</div></div>
+      <div class="stat"><div class="stat-num" data-target="20" data-suffix="+">0</div><div class="stat-label">Tools &amp; Frameworks</div></div>
     </div>
   </div>
   <div class="scroll-indicator">↓</div>
@@ -71,6 +72,36 @@
     </div>
 
     <div class="projects-grid">
+
+      <div class="project-card reveal" data-tags="react fastapi docker">
+        <div class="project-header">
+          <div class="project-icon">🎮</div>
+          <div class="project-links">
+            <a class="icon-link" href="https://github.com/neerajkattal/playtolearn" target="_blank">⌥ Code</a>
+          </div>
+        </div>
+        <div class="project-title">PlayToLearn <span style="font-size:11px; font-weight:600; color:var(--accent4); background:var(--tag-bg); padding:3px 9px; border-radius:6px; margin-left:6px; vertical-align:middle;">In Progress</span></div>
+        <p class="project-desc">A quiz-based microlearning game platform, built to address a real pattern: people don't stop learning because the content is bad, they stop because nothing pulls them back the next day. Two playable quiz games turn repetition into play instead of a chore.</p>
+        <div class="project-features">
+          <div class="feature">Race-track lesson game with a streak-combo indicator to drive daily replay</div>
+          <div class="feature">FastAPI + SQLAlchemy backend with PostgreSQL and Pydantic schemas</div>
+          <div class="feature">React.js + TypeScript frontend built with Vite &amp; Tailwind CSS</div>
+          <div class="feature">Full test coverage across gamification logic and lesson-completion flows (pytest)</div>
+          <div class="feature">Containerized with Docker Compose for local dev &amp; deployment</div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">React.js</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">Vite</span>
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Docker Compose</span>
+        </div>
+        <div class="project-btns">
+          <a class="btn-repo" href="https://github.com/neerajkattal/playtolearn" target="_blank">GitHub Repo</a>
+        </div>
+      </div>
 
       <div class="project-card reveal" data-tags="react fastapi docker">
         <div class="project-header">
@@ -174,12 +205,12 @@
           </div>
         </div>
         <div class="project-title">WeatherWear+ <span style="font-size:11px; font-weight:600; color:var(--accent4); background:var(--tag-bg); padding:3px 9px; border-radius:6px; margin-left:6px; vertical-align:middle;">In Progress</span></div>
-        <p class="project-desc">A full-stack academic project built with a project partner that recommends outfits based on real-time weather data. I own the backend, from weather API integration to recommendation logic.</p>
+        <p class="project-desc">A full-stack academic project built with a project partner that recommends outfits based on real-time weather data, with an AI assistant suggesting what to wear. I own the backend, from weather API integration to recommendation logic.</p>
         <div class="project-features">
           <div class="feature">Real-time weather data integration via external API</div>
+          <div class="feature">AI assistant layer suggesting outfit choices based on live conditions</div>
           <div class="feature">Outfit recommendation logic based on temperature, conditions &amp; season</div>
           <div class="feature">Backend built and owned end to end, paired frontend development</div>
-          <div class="feature">Currently in active development as an academic duo project</div>
         </div>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
@@ -219,9 +250,10 @@
           <div class="tl-role">Junior Software Engineer · Finex Lifecare</div>
           <div class="tl-meta">India · June 2025 – December 2025</div>
           <ul class="tl-desc">
-            <li>Built and shipped new features in a production web application used daily by internal stakeholders.</li>
-            <li>Refactored backend endpoints and validation logic in FastAPI, reducing API errors reported during QA cycles.</li>
-            <li>Collaborated in sprint planning and code reviews, using Docker and GitHub to keep releases consistent and reliable.</li>
+            <li>Built and shipped medication tracking features for a healthcare web application used daily by clinical staff.</li>
+            <li>Refactored backend API endpoints tied to the medication module, reducing recurring bugs.</li>
+            <li>Shipped weekly releases through sprint planning and peer code reviews.</li>
+            <li>Used Docker and CI/CD pipelines to automate builds, testing, and deployment.</li>
           </ul>
         </div>
       </div>
@@ -231,9 +263,10 @@
           <div class="tl-role">Software Engineering Intern · Finex Lifecare</div>
           <div class="tl-meta">India · January 2025 – June 2025</div>
           <ul class="tl-desc">
-            <li>Assisted in developing frontend and backend features across a live web application under senior engineer guidance.</li>
-            <li>Fixed reported bugs and improved UI consistency, directly reducing support tickets raised by end users.</li>
-            <li>Supported API integration work, learning production practices including version control and containerized workflows.</li>
+            <li>Built frontend features and wired them up to backend APIs in a healthcare web application.</li>
+            <li>Implemented CRUD operations and API testing, improving reliability for everyday internal use.</li>
+            <li>Followed version control and code review practices in Docker-based dev/prod environments.</li>
+            <li>Partnered with developers and product leads in structured Agile workflows.</li>
           </ul>
         </div>
       </div>
@@ -243,8 +276,7 @@
           <div class="tl-role">Sales &amp; Marketing Intern · Master-O (InspireOne Technologies)</div>
           <div class="tl-meta">India · June 2024 – September 2024</div>
           <ul class="tl-desc">
-            <li>Managed sales pipelines using CRM tools, improving lead tracking accuracy across the outreach process.</li>
-            <li>Analysed outreach data to identify engagement patterns, informing marketing strategy adjustments for the team.</li>
+            <li>Generated high-quality leads and improved SEO performance while supporting outreach and marketing campaigns.</li>
           </ul>
         </div>
       </div>
@@ -275,42 +307,115 @@
         <div class="skill-icon">⚛️</div>
         <div class="skill-cat">Frontend</div>
         <div class="skill-tags">
-          <span class="tag">React.js</span><span class="tag">JavaScript</span>
-          <span class="tag">HTML5</span><span class="tag">CSS3</span>
-          <span class="tag">Tailwind CSS</span><span class="tag">React Hooks</span>
-          <span class="tag">Responsive Design</span>
+          <span class="tag">React.js</span><span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span><span class="tag">HTML5</span>
+          <span class="tag">CSS3</span><span class="tag">Tailwind CSS</span>
+          <span class="tag">Vite</span><span class="tag">Responsive Design</span>
         </div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">⚙️</div>
-        <div class="skill-cat">Backend</div>
+        <div class="skill-cat">Backend &amp; Frameworks</div>
         <div class="skill-tags">
-          <span class="tag">FastAPI</span><span class="tag">Flask</span>
-          <span class="tag">Python</span><span class="tag">REST APIs</span>
-          <span class="tag">JWT Auth</span><span class="tag">Pydantic</span>
-          <span class="tag">SQLAlchemy</span>
+          <span class="tag">Python</span><span class="tag">FastAPI</span>
+          <span class="tag">Django</span><span class="tag">Flask</span>
+          <span class="tag">Node.js</span><span class="tag">Express.js</span>
+          <span class="tag">REST APIs</span><span class="tag">JWT Auth</span>
+          <span class="tag">Pydantic</span><span class="tag">SQLAlchemy</span>
         </div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">🗄️</div>
-        <div class="skill-cat">Databases &amp; Tools</div>
+        <div class="skill-cat">Databases</div>
         <div class="skill-tags">
-          <span class="tag">SQLite</span><span class="tag">PostgreSQL</span>
-          <span class="tag">Git</span><span class="tag">GitHub</span>
+          <span class="tag">PostgreSQL</span><span class="tag">SQLite</span>
+          <span class="tag">MySQL</span><span class="tag">MongoDB</span>
+          <span class="tag">Mongoose (ODM)</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-cat">Cloud &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">AWS (IAM, EC2, S3, RDS)</span><span class="tag">AWS CodePipeline</span>
+          <span class="tag">AWS CodeBuild</span><span class="tag">AWS CodeDeploy</span>
           <span class="tag">Docker</span><span class="tag">Docker Compose</span>
-          <span class="tag">Postman</span><span class="tag">VS Code</span>
-          <span class="tag">Vercel</span><span class="tag">Render</span>
+          <span class="tag">Kubernetes</span><span class="tag">OpenShift</span>
+          <span class="tag">CI/CD</span><span class="tag">Git</span>
+          <span class="tag">GitHub</span><span class="tag">GitLab</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-cat">AI Tooling</div>
+        <div class="skill-tags">
+          <span class="tag">Claude Code</span><span class="tag">Agentic Coding Assistants</span>
+          <span class="tag">AI Code Review</span><span class="tag">LLM API Integration</span>
         </div>
       </div>
       <div class="skill-card reveal">
         <div class="skill-icon">🧠</div>
-        <div class="skill-cat">Core CS &amp; Soft Skills</div>
+        <div class="skill-cat">Core Concepts &amp; Practices</div>
         <div class="skill-tags">
-          <span class="tag">DSA</span><span class="tag">OOP</span>
-          <span class="tag">Dynamic Programming</span><span class="tag">C++</span>
-          <span class="tag">Problem Solving</span><span class="tag">Client Communication</span>
-          <span class="tag">Team Collaboration</span>
+          <span class="tag">Data Structures &amp; Algorithms</span><span class="tag">Dynamic Programming</span>
+          <span class="tag">OOP</span><span class="tag">System Design</span>
+          <span class="tag">Microservices</span><span class="tag">Serverless (AWS Lambda)</span>
+          <span class="tag">Agile / Sprint Planning</span><span class="tag">Peer Code Review</span>
+          <span class="tag">Debugging &amp; RCA</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="section-title reveal">Certifications</h2>
+    <p class="section-desc reveal">Hands-on certifications in cloud infrastructure, containers, and DevOps practices.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🐳</div>
+        <div class="skill-cat">Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</div>
+        <p class="project-desc">IBM · Docker image builds, Kubernetes objects &amp; kubectl, container orchestration, intro to OpenShift &amp; Istio.</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-cat">AWS Core Services and Cloud Foundations</div>
+        <p class="project-desc">Packt · IAM, EC2, S3, and RDS fundamentals for cloud infrastructure.</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔁</div>
+        <div class="skill-cat">Hands-on with AWS: Software Development Practices</div>
+        <p class="project-desc">AWS · CI/CD with AWS CodePipeline, CodeBuild, and CodeDeploy; Git-based source control and unit testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="github-stats">
+  <div class="section-inner">
+    <div class="section-label reveal">Live from GitHub</div>
+    <h2 class="section-title reveal">By The Numbers</h2>
+    <p class="section-desc reveal">A live snapshot of my GitHub activity, updated automatically.</p>
+    <div class="skills-grid gh-stats-grid">
+      <div class="skill-card reveal gh-stats-card">
+        <img class="gh-img gh-img-dark" alt="Neeraj Kattal's GitHub stats" loading="lazy"
+             src="https://github-readme-stats.vercel.app/api?username=neerajkattal&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=e9c46a&text_color=c9baa3&icon_color=d4a373&ring_color=d4a373">
+        <img class="gh-img gh-img-light" alt="Neeraj Kattal's GitHub stats" loading="lazy"
+             src="https://github-readme-stats.vercel.app/api?username=neerajkattal&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=8a5a3b&text_color=6f6353&icon_color=a9744f&ring_color=a9744f">
+      </div>
+      <div class="skill-card reveal gh-stats-card">
+        <img class="gh-img gh-img-dark" alt="Neeraj Kattal's most used languages" loading="lazy"
+             src="https://github-readme-stats.vercel.app/api/top-langs/?username=neerajkattal&layout=compact&hide_border=true&bg_color=00000000&title_color=e9c46a&text_color=c9baa3">
+        <img class="gh-img gh-img-light" alt="Neeraj Kattal's most used languages" loading="lazy"
+             src="https://github-readme-stats.vercel.app/api/top-langs/?username=neerajkattal&layout=compact&hide_border=true&bg_color=00000000&title_color=8a5a3b&text_color=6f6353">
+      </div>
+      <div class="skill-card reveal gh-stats-card gh-streak">
+        <img class="gh-img gh-img-dark" alt="Neeraj Kattal's GitHub streak" loading="lazy"
+             src="https://github-readme-streak-stats.herokuapp.com/?user=neerajkattal&hide_border=true&background=00000000&ring=d4a373&fire=e9c46a&currStreakLabel=e9c46a&sideLabels=c9baa3&sideNums=f5ede1&dates=8f7f65">
+        <img class="gh-img gh-img-light" alt="Neeraj Kattal's GitHub streak" loading="lazy"
+             src="https://github-readme-streak-stats.herokuapp.com/?user=neerajkattal&hide_border=true&background=00000000&ring=a9744f&fire=8a5a3b&currStreakLabel=8a5a3b&sideLabels=6f6353&sideNums=2b2318&dates=a3957e">
       </div>
     </div>
   </div>
@@ -342,7 +447,7 @@
 
         <div class="about-block">
           <div class="about-block-label">Currently Building</div>
-          <p>Right now I'm building <b>WeatherWear+</b> with a project partner, a full-stack app that recommends what to wear based on real-time weather data. I own the backend, handling the weather API integration, recommendation logic, and data flow end to end.</p>
+          <p>Right now I'm building <b>PlayToLearn</b>, a quiz-based microlearning game platform designed around a simple idea: people don't stop learning because the content is bad, they stop because nothing pulls them back the next day. I'm also building <b>WeatherWear+</b> with a project partner, a full-stack app that recommends what to wear based on real-time weather data, where I own the backend end to end.</p>
         </div>
 
         <div class="about-block">

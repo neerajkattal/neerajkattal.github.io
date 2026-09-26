@@ -77,29 +77,33 @@
         <div class="project-header">
           <div class="project-icon">🎮</div>
           <div class="project-links">
-            <a class="icon-link" href="https://github.com/neerajkattal/playtolearn" target="_blank">⌥ Code</a>
+            <a class="icon-link" href="https://playtolearn-five.vercel.app" target="_blank">↗ Live</a>
+            <a class="icon-link" href="https://github.com/neerajkattal/microlearning-platform" target="_blank">⌥ Code</a>
           </div>
         </div>
-        <div class="project-title">PlayToLearn <span style="font-size:11px; font-weight:600; color:var(--accent4); background:var(--tag-bg); padding:3px 9px; border-radius:6px; margin-left:6px; vertical-align:middle;">In Progress</span></div>
+        <div class="project-title">PlayToLearn</div>
         <p class="project-desc">A quiz-based microlearning game platform, built to address a real pattern: people don't stop learning because the content is bad, they stop because nothing pulls them back the next day. Two playable quiz games turn repetition into play instead of a chore.</p>
         <div class="project-features">
-          <div class="feature">Race-track lesson game with a streak-combo indicator to drive daily replay</div>
-          <div class="feature">FastAPI + SQLAlchemy backend with PostgreSQL and Pydantic schemas</div>
+          <div class="feature">Two Phaser mini-games (a lane-dodging runner, a balloon-popping game) with server-authoritative scoring - the client never sees the correct answer before it submits</div>
+          <div class="feature">FastAPI + SQLAlchemy backend with PostgreSQL, Redis caching/rate-limiting, and Pydantic schemas</div>
           <div class="feature">React.js + TypeScript frontend built with Vite &amp; Tailwind CSS</div>
-          <div class="feature">Full test coverage across gamification logic and lesson-completion flows (pytest)</div>
-          <div class="feature">Containerized with Docker Compose for local dev &amp; deployment</div>
+          <div class="feature">Two independent question sources behind one provider abstraction, an admin dashboard, and 377 automated tests (pytest + Vitest)</div>
+          <div class="feature">Live production deployment - Vercel (frontend), Render (API, Docker), Upstash (Redis) - with a Docker Compose local dev environment</div>
         </div>
         <div class="project-stack">
           <span class="stack-tag">React.js</span>
           <span class="stack-tag">TypeScript</span>
           <span class="stack-tag">Vite</span>
           <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">Phaser</span>
           <span class="stack-tag">FastAPI</span>
           <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Redis</span>
           <span class="stack-tag">Docker Compose</span>
         </div>
         <div class="project-btns">
-          <a class="btn-repo" href="https://github.com/neerajkattal/playtolearn" target="_blank">GitHub Repo</a>
+          <a class="btn-demo" href="https://playtolearn-five.vercel.app" target="_blank">Live Demo</a>
+          <a class="btn-repo" href="https://github.com/neerajkattal/microlearning-platform" target="_blank">GitHub Repo</a>
         </div>
       </div>
 
